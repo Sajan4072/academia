@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load static%}
+
+{% block title %}
+    <title> Homepage | AcademicEarth</title>
+{% endblock title%}
+
+{% block content %}
+<div class="container-fluid m-0 p-0">
+  <div class="col-md-4 mx-auto my-5 card card-body shadow">
+    {% include 'message.html' %}
+  <form method="POST">
+    {% csrf_token %}
+    <h3 class="text-center">Login</h3>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Username</label>
+    <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+  </div>
+  <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+</form>
+</div>
+</div>
+{% endblock content %}

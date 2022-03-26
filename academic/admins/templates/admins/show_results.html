@@ -1,0 +1,67 @@
+{% extends 'layout-admin.html' %}
+{% load static%}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title> Dashboard-Admin | AcademicEarth</title>
+{% endblock title%}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="message">
+        {% include 'message.html' %}
+    </div>
+    <div class="header">
+        <h1>Results</h1>
+        <a class="btn btn-success btn-sm me-0" href="{% url 'add_results' %}">Add New Result (CSV File)</a>
+         <a class="btn btn-primary btn-sm me-0" href="{% url 'add_results_manual' %}">Add New Result (Manual)</a>
+ <a class="btn btn-secondary btn-sm me-0" href="{% url 'show_results_all' %}">View All Results</a>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+             <section class="mt-3">
+        <div class="card shadow">
+            <div class="card-header">
+                <h3>Filters</h3>
+            </div>
+            <div class="card-body">
+            <form method="GET">
+                {{student_filter.form|crispy}}
+                <button type="submit" class="btn btn-primary btn-sm mt-3">Search</button>
+            </form>
+                </div>
+        </div>
+    </section>
+        </div>
+        <div class="col-md-9">
+            <section class="mt-3">
+        <div class="row">
+            <div class="col-md-11 mx-auto shadow">
+                <table class="table">
+                    <thead>
+                    <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                    </thead>
+                    </tr>
+                    <tbody>
+                    {% for i in results %}
+                    <tr>
+                        <td>{{i.studentid}}</td>
+                        <td>{{i.fullname}}</td>
+                        <td><a class="btn btn-sm btn-primary" href="{% url 'show_detail_results' i.studentid %}">View Details</a>
+                        <a class="btn btn-sm btn-danger" href="{% url 'delete_results' i.studentid %}"
+                        onclick="return confirm('Are you sure want to delete this result?')">Delete Results</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

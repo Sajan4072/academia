@@ -1,0 +1,72 @@
+{% extends 'layout-lecturer.html' %}
+{% load static%}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title> Dashboard-Lecturer | AcademicEarth</title>
+{% endblock title%}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="message">
+        {% include 'message.html' %}
+    </div>
+    <div class="header">
+        <h1>All Submissions</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+             <section class="mt-3">
+        <div class="card shadow">
+            <div class="card-header">
+                <h3>Filters</h3>
+            </div>
+            <div class="card-body">
+            <form method="GET">
+                {{student_filter.form|crispy}}
+                <button type="submit" class="btn btn-primary btn-sm mt-3">Search</button>
+            </form>
+                </div>
+        </div>
+    </section>
+        </div>
+        <div class="col-md-9">
+            <section class="mt-3">
+        <div class="row">
+            <div class="col-md-11 mx-auto shadow">
+                <table class="table">
+                    <thead>
+                    <tr>
+                    <th>Username</th>
+                        <th>Assignment Title</th>
+                        <th>Module Code</th>
+                        <th>Submitted File</th>
+                        <th>Submitted Date </th>
+                        <th>Deadline</th>
+
+                    </thead>
+                    </tr>
+                    <tbody>
+                    {% for i in results %}
+                    <tr>
+                        <td>{{i.user.username}}</td>
+
+                        <td>{{i.assignment.title}}</td>
+                        <td>{{i.module.module_code}}</td>
+
+                        <td><a href="/{{i.submission_file}}">{{i.title}}</a></td>
+                        <td>{{i.created_date}}</td>
+                        <td>{{i.assignment.deadline}}</td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

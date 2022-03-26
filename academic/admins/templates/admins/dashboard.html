@@ -1,0 +1,122 @@
+{% extends 'layout-admin.html' %}
+{% load static%}
+
+{% block title %}
+<title> Dashboard-Admin | AcademicEarth</title>
+{% endblock title%}
+
+{% block content %}
+{% include 'message.html' %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="card col-md-3 mx-4 my-4 shadow text-center bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Students</h5>
+                <a class="text-white text-decoration-none fw-bold" href="{% url 'show_students' %}"><p class="card-text">{{student}}</p></a>
+            </div>
+        </div>
+        <div class="card col-md-3 mx-4 my-4 shadow text-center bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Lecturers</h5>
+                <a class="text-white text-decoration-none fw-bold" href="{% url 'show_lecturers' %}"><p class="card-text">{{lecturer}}</p></a>
+            </div>
+        </div>
+        <div class="card col-md-3 mx-4 my-4 shadow text-center bg-dark text-white">
+            <div class="card-body">
+                <h5 class="card-title">Admins</h5>
+                <a class="text-white text-decoration-none fw-bold" href="{% url 'show_admins' %}"><p class="card-text">{{admin}}</p></a>
+            </div>
+        </div>
+        <div class="card col-md-3 mx-4 my-4 shadow text-center bg-warning text-white">
+            <div class="card-body">
+                <h5 class="card-title">Courses</h5>
+                <a class="text-white text-decoration-none fw-bold" href="{% url 'show_courses' %}"><p class="card-text">{{course}}</p></a>
+            </div>
+        </div>
+        <div class="card col-md-3 mx-4 my-4 shadow text-center bg-danger text-white">
+            <div class="card-body">
+                <h5 class="card-title">Modules</h5>
+                <a class="text-white text-decoration-none fw-bold" href="{% url 'show_modules' %}"><p class="card-text">{{module}}</p></a>
+            </div>
+        </div>
+        <div class="card col-md-3 mx-4 my-4 shadow text-center bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Assignments</h5>
+              <p class="card-text">{{assignment}}</p>
+            </div>
+        </div>
+        <div class="card col-md-3 mx-4 my-4 shadow text-center bg-secondary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Results</h5>
+                <a class="text-white text-decoration-none fw-bold" href="{% url 'show_results' %}"><p class="card-text">{{result}}</p></a>
+            </div>
+        </div>
+        <div class="card col-md-3 mx-4 my-4 shadow text-center bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Fees</h5>
+                <a class="text-white text-decoration-none fw-bold" href="{% url 'show_fees' %}"><p class="card-text">{{fee}}</p></a>
+            </div>
+        </div>
+        <div class="card col-md-3 mx-4 my-4 shadow text-center bg-warning text-white">
+            <div class="card-body">
+                <h5 class="card-title">Enquiries</h5>
+                <a class="text-white text-decoration-none fw-bold" href="{% url 'show_enquiries' %}"> <p class="card-text">{{enquiry}}</p></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+        <h3 class="text-center mt-4"> Graphical Dashboard</h3>
+
+        <div class="col-md-12 border-1 mt-4">
+            <canvas id="myChart" width="400" height="150"></canvas>
+            <script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Students','Lecturers','Admins','Courses','Modules','Assignments','Results','Fees','Enquiries'],
+        datasets: [{
+            label: 'Categories',
+            data: [{{student}},{{lecturer}},{{admin}},{{course}},{{module}},{{assignment}},{{result}},{{fee}},{{enquiry}}],
+            backgroundColor: [
+                'rgba(6, 169, 99, 0.8)',
+                'rgba(16, 193, 207, 0.8)',
+                'rgba(0, 0, 0, 0.97)',
+                'rgba(228, 129, 8, 0.79)',
+                 'rgba(227, 52, 9, 0.79)',
+                'rgba(9, 57, 227, 0.79)',
+                'rgba(88, 89, 91, 0.79)',
+                'rgba(6, 169, 99, 0.8)',
+                 'rgba(228, 129, 8, 0.79)',
+            ],
+            borderColor: [
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                 'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                 'rgba(255, 255, 255, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+            </script>
+        </div>
+</div>
+    </div>
+{% endblock content %}

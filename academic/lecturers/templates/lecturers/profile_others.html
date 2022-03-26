@@ -1,0 +1,67 @@
+{% extends 'layout-lecturer.html' %}
+{% load static%}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title> Dashboard-Lecturer | AcademicEarth</title>
+{% endblock title%}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="message">
+        {% include 'message.html' %}
+    </div>
+    <div class="header mt-3 text-center">
+        <h1>Profile : {{student.username}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mx-auto card shadow">
+            <div class="card-header">
+                <h5>Username: {{student.username}}</h5>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <p>Firstname: {{student.firstname}}</p>
+                    <p>Middlename: {{student.middlename}}</p>
+                    <p>Lastname: {{student.lastname}}</p>
+                    <p>Email: {{student.email}}</p>
+                    <p>Gender: {{student.gender}}</p>
+                    <p>DOB: {{student.dob}}</p>
+                    <p>Marital Status: {{student.marital_status}}</p>
+                    <p>Job Type: {{student.job_type}}</p>
+                    <p>Job Role: {{student.job_role}}</p>
+                    <p>Mobile No: {{student.phone}}</p>
+                    <p>Address: {{student.address}}</p>
+                    <p>Emergency Contact Name: {{student.emergency_contact_name}}</p>
+                    <p>Emergency Contact Phone: {{student.emergency_contact_no}}</p>
+                    <p>Enrolled Date: {{student.created_date}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 mx-auto card shadow">
+            <img src="/{{student.profile_pic}}">
+        </div>
+    </div>
+    <div class="header mt-4 text-center">
+        <h1>Update Profile : {{student.username}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mx-auto">
+            <div class="py-2 px-2 card card-body shadow rounded">
+                <form class="form" action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy}}
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    for (var field in form_fields){
+    form_fields[field].className += ' my-2'
+    }
+</script>
+
+{% endblock content %}

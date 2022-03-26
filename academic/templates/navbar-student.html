@@ -1,0 +1,58 @@
+{% load static %}
+<div class="container-fluid p-3">
+    <div class="row ">
+        <div class="col-md-12 d-flex justify-content-between">
+
+            <div class="col-md-11"><a class="navbar-brand" href="{% url 'admin_dashboard' %}"><img
+                    src="{% static 'images/logo.png' %}" width="200px"></a></div>
+            <div class="col-md-1 text-end">
+                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">Menu
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="offcanvasWithBackdrop"
+         aria-labelledby="offcanvasWithBackdropLabel" style="max-width:250px">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Student Dashboard</h5>
+            <button type="button" class="btn-close text-reset bg-warning" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-unstyled">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'student_dashboard'%}">Dashboard</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'show_detail_results_student'%}">Results | Prediction</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'student_dashboard'%}">Modules</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'show_submissions'%}">My Submissions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'show_fees_students'%}">Fees</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'profile_students_students' %}">Profile</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'password_change_student'%}">Settings</a>
+                </li>
+                <li class="nav-item mb-auto">
+                    <a class="btn btn-danger btn-sm nav-link text-white" href="{% url 'signout' %}">Logout</a>
+                </li>
+            </ul>
+            <div class="profile text-center">
+                <img src="/{{request.user.profile.profile_pic}}" width="150px" height="150px" class="rounded-circle">
+                <p>{{request.user.profile.firstname }} {{request.user.profile.lastname}}</p>
+            </div>
+        </div>
+    </div>
+</div>

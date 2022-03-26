@@ -1,0 +1,67 @@
+{% extends 'layout-student.html' %}
+{% load static%}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title> Dashboard-Student | AcademicEarth</title>
+{% endblock title%}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="message">
+        {% include 'message.html' %}
+    </div>
+    <div class="header mt-3 text-center">
+        <h1>Student Profile : {{request.user.username}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mx-auto card shadow">
+            <div class="card-header">
+                <h5>Username: {{request.user.username}}</h5>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <p>Firstname: {{request.user.profile.firstname}}</p>
+                    <p>Middlename: {{request.user.profile.middlename}}</p>
+                    <p>Lastname: {{request.user.profile.lastname}}</p>
+                    <p>Email: {{request.user.profile.email}}</p>
+                    <p>Gender: {{request.user.profile.gender}}</p>
+                    <p>DOB: {{request.user.profile.dob}}</p>
+                    <p>Marital Status: {{request.user.profile.marital_status}}</p>
+                    <p>Course: {{request.user.profile.course}}</p>
+                    <p>Batch: {{request.user.profile.batch}}</p>
+                    <p>Mobile No: {{request.user.profile.phone}}</p>
+                    <p>Address: {{request.user.profile.address}}</p>
+                    <p>Guardian Name: {{request.user.profile.guardian_name}}</p>
+                    <p>Guardian Phone: {{request.user.profile.guardian_phone}}</p>
+                    <p>Enrolled Date: {{request.user.profile.created_date}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 mx-auto card shadow">
+            <img src="/{{request.user.profile.profile_pic}}">
+        </div>
+    </div>
+    <div class="header mt-4 text-center">
+        <h1>Update Profile Picture : {{request.user.profile.username}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mx-auto">
+            <div class="py-2 px-2 card card-body shadow rounded">
+                <form class="form" action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form | crispy}}
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    for (var field in form_fields){
+    form_fields[field].className += ' my-2'
+    }
+</script>
+
+{% endblock content %}

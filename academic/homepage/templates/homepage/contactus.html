@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+{% load static%}
+
+{% block title %}
+    <title> Contact Us | AcademicEarth</title>
+{% endblock title%}
+
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+         {% include 'message.html' %}
+      <div class="col-lg-6 col-md-8 mx-auto">
+
+        <h1 class="fw-light">About Us</h1>
+        <p class="lead text-muted">Academic Earth was premised on the assumption that everyone should have the opportunity to get a world-class education. In 2021, we created the very first online university course collection from some of the world's best universities. Ever since, the world of open education has flourished. Therefore, our staff has hand-selected our specialized lists of courses to bring you the top choices in each particular field. We also provide a prognosis of student performance based on their findings. We also make certain that there is something for everyone: whether you want to learn about a new topic or develop in your existing career, AcademicEarth has something for you.</p>
+      </div>
+    </div>
+  </section>
+<hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 mx-auto text-center py-3">
+               <h1 class="fw-light">Contact Us</h1>
+            </div>
+        </div>
+    </div>
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well well-sm">
+                <form method="POST">
+                    {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label for="name">
+                                Name</label>
+                            <input type="text" name="fullname" class="form-control" id="name" placeholder="Enter name" required="required" />
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="email">
+                                Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="name">
+                                Phone</label>
+                            <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter phone no" required="required" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                                placeholder="Message"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary btn-sm" id="btnContactUs">
+                            Send Message</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form>
+            <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
+            <address>
+                <strong>Twitter, Inc.</strong><br>
+                AcademicEarth, AE600<br>
+                Kawasoti, Nawalparasi<br>
+                <abbr title="Phone">
+                    Phone:</abbr>
+                +977 9824408644
+            </address>
+            <address>
+                <strong>Full Name</strong><br>
+                <a href="mailto:#">AcademicEarth@gmail.com</a>
+            </address>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

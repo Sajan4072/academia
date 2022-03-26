@@ -1,0 +1,505 @@
+{% extends 'layout-admin.html' %}
+{% load static%}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title> Dashboard-Admin | AcademicEarth</title>
+{% endblock title%}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="message">
+        {% include 'message.html' %}
+    </div>
+    <div class="header">
+        <h1>Module - {{module.module_name}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card col-md-11 shadow mx-auto">
+                <div class="card-header">
+                    <h5 class="card-title">{{module.module_code}}-{{module.module_name}}</h5>
+                </div>
+                <div class="card-body">
+
+                    <p class="card-text"><strong>Course:</strong> {{module.course.course_name}}</p>
+                    <p class="card-text"><strong>Semester:</strong> {{module.semester}}</p>
+                    <p class="card-text" id=""><strong>About Module:</strong> {{module.module_desc}}</p>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-11 mx-auto mt-5">
+            <h3 class="text-center">Contents</h3>
+            <div class="text-center">
+                <a href="{% url 'add_contents' module.id%}" class="btn btn-outline-success btn-sm m-3">Add Contents</a>
+            </div>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Week #1
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                             {% for i in week1 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Week #2
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                             {% for i in week2 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Week #3
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          {% for i in week3 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Week #4
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          {% for i in week4 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Week #5
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          {% for i in week5 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Week #6
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          {% for i in week6 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            Week #7
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          {% for i in week7 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEight">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            Week #8
+                        </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          {% for i in week8 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingNine">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                            Week #9
+                        </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          {% for i in week9 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTen">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                            Week #10
+                        </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          {% for i in week10 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEleven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                            Week #11
+                        </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                         data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          {% for i in week11 %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Lecture {{forloop.counter}}: {{i.title}}</a></p>
+                                <p><a href="{% url 'delete_contents' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11 mx-auto mt-5">
+            <h3 class="text-center">Assignments</h3>
+            <div class="text-center">
+                <a href="{% url 'add_assignments' module.id%}" class="btn btn-outline-success btn-sm m-3">Add Assignments</a>
+            </div>
+            <div class="accordion" id="accordionExample2">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOnea">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOnea" aria-expanded="true" aria-controls="collapseOnea">
+                            Week #1
+                        </button>
+                    </h2>
+                    <div id="collapseOnea" class="accordion-collapse collapse show" aria-labelledby="headingOnea"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                             {% for i in week1a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.assignment_file}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwoa">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwoa" aria-expanded="false" aria-controls="collapseTwoa">
+                            Week #2
+                        </button>
+                    </h2>
+                    <div id="collapseTwoa" class="accordion-collapse collapse" aria-labelledby="headingTwoa"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                             {% for i in week2a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a></p>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThreea">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThreea" aria-expanded="false" aria-controls="collapseThreea">
+                            Week #3
+                        </button>
+                    </h2>
+                    <div id="collapseThreea" class="accordion-collapse collapse" aria-labelledby="headingThreea"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                          {% for i in week3a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a></p>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFoura">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFoura" aria-expanded="false" aria-controls="collapseFoura">
+                            Week #4
+                        </button>
+                    </h2>
+                    <div id="collapseFoura" class="accordion-collapse collapse" aria-labelledby="headingFoura"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                          {% for i in week4a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a></p>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFivea">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFivea" aria-expanded="false" aria-controls="collapseFivea">
+                            Week #5
+                        </button>
+                    </h2>
+                    <div id="collapseFivea" class="accordion-collapse collapse" aria-labelledby="headingFivea"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                          {% for i in week5a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a></p>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSixa">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSixa" aria-expanded="false" aria-controls="collapseSixa">
+                            Week #6
+                        </button>
+                    </h2>
+                    <div id="collapseSixa" class="accordion-collapse collapse" aria-labelledby="headingSixa"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                          {% for i in week6a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a></p>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSevena">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSevena" aria-expanded="false" aria-controls="collapseSevena">
+                            Week #7
+                        </button>
+                    </h2>
+                    <div id="collapseSevena" class="accordion-collapse collapse" aria-labelledby="headingSevena"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                          {% for i in week7a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a></p>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEighta">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseEighta" aria-expanded="false" aria-controls="collapseEighta">
+                            Week #8
+                        </button>
+                    </h2>
+                    <div id="collapseEighta" class="accordion-collapse collapse" aria-labelledby="headingEighta"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                          {% for i in week8a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a></p>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingNinea">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseNinea" aria-expanded="false" aria-controls="collapseNinea">
+                            Week #9
+                        </button>
+                    </h2>
+                    <div id="collapseNinea" class="accordion-collapse collapse" aria-labelledby="headingNinea"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                          {% for i in week9a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a></p>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTena">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTena" aria-expanded="false" aria-controls="collapseTena">
+                            Week #10
+                        </button>
+                    </h2>
+                    <div id="collapseTena" class="accordion-collapse collapse" aria-labelledby="headingTena"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                          {% for i in week10a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a></p>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingElevena">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseElevena" aria-expanded="false" aria-controls="collapseElevena">
+                            Week #11
+                        </button>
+                    </h2>
+                    <div id="collapseElevena" class="accordion-collapse collapse" aria-labelledby="headingElevena"
+                         data-bs-parent="#accordionExample2">
+                        <div class="accordion-body">
+                          {% for i in week11a %}
+                            <div class="d-flex justify-content-between">
+                                <p><a href="/{{i.content}}" target="_blank">Assignment {{forloop.counter}}: {{i.title}}</a></p>
+								<p> Deadline : {{i.deadline}}</p>
+                                <p><a href="{% url 'delete_assignments' i.id %}" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Are you sure want to delete?')">Delete</a></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

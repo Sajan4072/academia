@@ -1,0 +1,12 @@
+Location: ...\AcademicEarth\academic
+
+pip install mysqlclient
+pip install django-crispy-forms
+pip install django-filter
+pip install -U scikit-learn
+pip install django-pandas
+
+
+python manage.py createsuperuser [to create admin user]
+
+python manage.py runserver

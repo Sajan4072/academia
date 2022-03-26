@@ -1,0 +1,37 @@
+Student ID,Fullname,Subject,Course,Semester,Cw,Ex,Mm,Status
+190188,Salman Khan,Enterprise Information Systems,STWU01EEC-BSC-FT-1-STW,1,70,80,75,P
+190188,Salman Khan,Designing for Usability 1,STWU01EEC-BSC-FT-1-STW,1,20,20,75,P
+190188,Salman Khan,Introduction to Algorithms,STWU01EEC-BSC-FT-1-STW,1,84,,84,P
+190188,Salman Khan,Intercultural Communications Skills for Internation Students,STWU01EEC-BSC-FT-1-STW,1,86,,86,P
+190289,Virat Kohli,Enterprise Information Systems,STWU01EEC-BSC-FT-1-STW,1,48,58,53,P
+190289,Virat Kohli,Designing for Usability 1,STWU01EEC-BSC-FT-1-STW,1,,,66,P
+190289,Virat Kohli,Introduction to Algorithms,STWU01EEC-BSC-FT-1-STW,1,50,,50,P
+190289,Virat Kohli,Intercultural Communications Skills for Internation Students,STWU01EEC-BSC-FT-1-STW,1,45,,45,P
+190101,Rohit Sharma,Enterprise Information Systems,STWU01EEC-BSC-FT-1-STW,1,58,70,64,P
+190101,Rohit Sharma,Designing for Usability 1,STWU01EEC-BSC-FT-1-STW,1,,,68,P
+190101,Rohit Sharma,Introduction to Algorithms,STWU01EEC-BSC-FT-1-STW,1,84,,84,P
+190101,Rohit Sharma,Intercultural Communications Skills for Internation Students,STWU01EEC-BSC-FT-1-STW,1,74,,74,P
+190343,Babar Axam,Enterprise Information Systems,STWU01EEC-BSC-FT-1-STW,1,58,82,70,P
+190343,Babar Axam,Designing for Usability 1,STWU01EEC-BSC-FT-1-STW,1,,,71,P
+190343,Babar Axam,Introduction to Algorithms,STWU01EEC-BSC-FT-1-STW,1,67,,67,P
+190343,Babar Axam,Intercultural Communications Skills for Internation Students,STWU01EEC-BSC-FT-1-STW,1,77,,77,P
+190188,Salman Khan,Databases,STWU01EEC-BSC-FT-1-STW,2,70,80,75,P
+190188,Salman Khan,Networks,STWU01EEC-BSC-FT-1-STW,2,70,80,65,P
+190188,Salman Khan,PIIT,STWU01EEC-BSC-FT-1-STW,2,70,80,75,P
+190188,Salman Khan,Skills for Computing,STWU01EEC-BSC-FT-1-STW,2,70,80,65,P
+190188,Salman Khan,IOT,STWU01EEC-BSC-FT-1-STW,3,70,80,75,P
+190188,Salman Khan,Python,STWU01EEC-BSC-FT-1-STW,3,70,80,65,P
+190188,Salman Khan,Django,STWU01EEC-BSC-FT-1-STW,3,70,80,75,P
+190188,Salman Khan,PHP,STWU01EEC-BSC-FT-1-STW,3,70,80,65,P
+190188,Salman Khan,Agile,STWU01EEC-BSC-FT-1-STW,4,70,80,75,P
+190188,Salman Khan,Academic,STWU01EEC-BSC-FT-1-STW,4,70,80,65,P
+190188,Salman Khan,Thesis,STWU01EEC-BSC-FT-1-STW,4,70,80,75,P
+190188,Salman Khan,Maths,STWU01EEC-BSC-FT-1-STW,4,70,80,65,P
+190188,Salman Khan,Databases,STWU01EEC-BSC-FT-1-STW,5,70,80,75,P
+190188,Salman Khan,Networks,STWU01EEC-BSC-FT-1-STW,5,70,80,65,P
+190188,Salman Khan,PIIT,STWU01EEC-BSC-FT-1-STW,5,70,80,75,P
+190188,Salman Khan,Skills for Computing,STWU01EEC-BSC-FT-1-STW,5,70,80,65,P
+190188,Salman Khan,IOT,STWU01EEC-BSC-FT-1-STW,6,70,80,75,P
+190188,Salman Khan,Python,STWU01EEC-BSC-FT-1-STW,6,70,80,65,P
+190188,Salman Khan,Django,STWU01EEC-BSC-FT-1-STW,6,70,80,75,P
+190188,Salman Khan,PHP,STWU01EEC-BSC-FT-1-STW,6,70,80,65,P

@@ -1,0 +1,342 @@
+{% extends 'layout-student.html' %}
+{% load static%}
+
+{% block title %}
+<title> Dashboard-Student | AcademicEarth</title>
+{% endblock title%}
+
+{% block content %}
+{% include 'message.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto shadow">
+            <h3 class="text-center mb-5">Results</h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Semester</th>
+                    <th>Subject</th>
+                    <th>Coursework</th>
+                    <th>Exam</th>
+                    <th>Marks</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{result.studentid}}</td>
+                    <td>{{result.semester}}</td>
+                    <td>{{result.subject}}</td>
+                    <td>{{result.coursework}}</td>
+                    <td>{{result.exam}}</td>
+                    <td>{{result.marks}}</td>
+                    <td>{{result.status}}</td>
+
+
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-md-12 mx-auto shadow mt-5">
+            <h3 class="text-center mb-5">Prediction and Actual Percentage</h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Semester</th>
+                    <th>Prediction %</th>
+                    <th>Actual %</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>We cannot predict first semester results as there is no previous academic results.</td>
+                    <td>{{actual1}}</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>{{prediction2}}</td>
+                    <td>{{actual2}}</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>{{prediction3}}</td>
+                    <td>{{actual3}}</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>{{prediction4}}</td>
+                    <td>{{actual4}}</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>{{prediction5}}</td>
+                    <td>{{actual5}}</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>{{prediction6}}</td>
+                    <td>{{actual6}}</td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <h3 class="text-center mt-4">Result Graphs</h3>
+        {% if actual1 != 'Sorry, we cannot find results.' %}
+        <div class="col-md-6 border-1 mt-4">
+            <h3 class="text-center">Semester 1</h3>
+
+            <canvas id="myChart" width="400" height="400"></canvas>
+            {% endif %}
+            <script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [{%for result in results %}{% if result.semester == '1' %} '{{result.subject}}',{%endif%}{%endfor%}],
+        datasets: [{
+            label: 'Marks',
+            data: [{%for result in results %}{% if result.semester == '1' %}'{{result.marks}}',{%endif%}{%endfor%}],
+            backgroundColor: [
+                'rgba(14, 145, 138, 0.8)',
+                'rgba(21, 124, 201, 0.8)',
+                'rgba(15, 168, 42, 0.8)',
+                'rgba(97, 7, 171, 0.8)',
+            ],
+            borderColor: [
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+            </script>
+        </div>
+
+        {% if actual2 != 'Sorry, we cannot find results.' %}
+        <div class="col-md-6 border-1 mt-4">
+            <h3 class="text-center">Semester 2</h3>
+
+            <canvas id="myChart2" width="400" height="400"></canvas>
+            {% endif %}
+
+            <script>
+const ctx2 = document.getElementById('myChart2').getContext('2d');
+const myChart2 = new Chart(ctx2, {
+    type: 'polarArea',
+    data: {
+        labels: [{%for result in results %}{% if result.semester == '2' %}'{{result.subject}}',{%endif%}{%endfor%}],
+        datasets: [{
+            label: 'Marks',
+            data: [{%for result in results %}{% if result.semester == '2' %}'{{result.marks}}',{%endif%}{%endfor%}],
+            backgroundColor: [
+               'rgba(14, 145, 138, 0.8)',
+                'rgba(21, 124, 201, 0.8)',
+                'rgba(15, 168, 42, 0.8)',
+                'rgba(97, 7, 171, 0.8)',
+            ],
+            borderColor: [
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+
+});
+
+            </script>
+        </div>
+        {% if actual3 != 'Sorry, we cannot find results.' %}
+        <div class="col-md-6 border-1 mt-4">
+            <h3 class="text-center">Semester 3</h3>
+            <canvas id="myChart3" width="400" height="400"></canvas>
+            {%endif%}
+            <script>
+const ctx3 = document.getElementById('myChart3').getContext('2d');
+const myChart3 = new Chart(ctx3, {
+    type: 'pie',
+    data: {
+        labels: [{%for result in results %}{% if result.semester == '3' %}'{{result.subject}}',{%endif%}{%endfor%}],
+        datasets: [{
+            label: 'Marks',
+            data: [{%for result in results %}{% if result.semester == '3' %}'{{result.marks}}',{%endif%}{%endfor%}],
+            backgroundColor: [
+                'rgba(14, 145, 138, 0.8)',
+                'rgba(21, 124, 201, 0.8)',
+                'rgba(15, 168, 42, 0.8)',
+                'rgba(97, 7, 171, 0.8)',
+            ],
+            borderColor: [
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+
+});
+
+            </script>
+        </div>
+        {% if actual4 != 'Sorry, we cannot find results.' %}
+        <div class="col-md-6 border-1 mt-4">
+            <h3 class="text-center">Semester 4</h3>
+            <canvas id="myChart4" width="400" height="400"></canvas>
+            {%endif%}
+            <script>
+const ctx4 = document.getElementById('myChart4').getContext('2d');
+const myChart4 = new Chart(ctx4, {
+    type: 'doughnut',
+    data: {
+        labels: [{%for result in results %}{% if result.semester == '4' %}'{{result.subject}}',{%endif%}{%endfor%}],
+        datasets: [{
+            label: 'Marks',
+            data: [{%for result in results %}{% if result.semester == '4' %}'{{result.marks}}',{%endif%}{%endfor%}],
+            backgroundColor: [
+                'rgba(14, 145, 138, 0.8)',
+                'rgba(21, 124, 201, 0.8)',
+                'rgba(15, 168, 42, 0.8)',
+                'rgba(97, 7, 171, 0.8)',
+            ],
+            borderColor: [
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+
+});
+
+            </script>
+        </div>
+        {% if actual5 != 'Sorry, we cannot find results.' %}
+        <div class="col-md-6 border-1 mt-4">
+            <h3 class="text-center">Semester 5</h3>
+            <canvas id="myChart5" width="400" height="400"></canvas>
+            {%endif%}
+            <script>
+
+
+
+const ctx5 = document.getElementById('myChart5').getContext('2d');
+const myChart5 = new Chart(ctx5, {
+    type: 'polarArea',
+    data: {
+        labels: [{%for result in results %}{% if result.semester == '5' %}'{{result.subject}}',{%endif%}{%endfor%}],
+        datasets: [{
+            label: 'Marks',
+            data: [{%for result in results %}{% if result.semester == '5' %}'{{result.marks}}',{%endif%}{%endfor%}],
+            backgroundColor: [
+                'rgba(14, 145, 138, 0.8)',
+                'rgba(21, 124, 201, 0.8)',
+                'rgba(15, 168, 42, 0.8)',
+                'rgba(97, 7, 171, 0.8)',
+            ],
+            borderColor: [
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+                'rgba(255, 255, 255, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+
+});
+
+            </script>
+        </div>
+        {% if actual6 != 'Sorry, we cannot find results.' %}
+        <div class="col-md-6 border-1 mt-4">
+            <h3 class="text-center">Semester 6</h3>
+            <canvas id="myChart6" width="400" height="400"></canvas>
+            {%endif%}
+            <script>
+
+
+
+const ctx6 = document.getElementById('myChart6').getContext('2d');
+const myChart6 = new Chart(ctx6, {
+    type: 'line',
+    data: {
+        labels: [{%for result in results %}{% if result.semester == '6' %}'{{result.subject}}',{%endif%}{%endfor%}],
+        datasets: [{
+            label: 'Marks',
+            data: [{%for result in results %}{% if result.semester == '6' %}'{{result.marks}}',{%endif%}{%endfor%}],
+            fill: false,
+            borderColor: 'rgba(14, 145, 138, 0.8)',
+            tension: 1
+
+        }]
+    },
+
+});
+
+            </script>
+        </div>
+
+        {% if actual1 and actual2 and actual3 and actual4 and actual5 and actual6 != 'Sorry, we cannot find results.' %}
+        <div class="col-md-12 border-1 mt-5">
+            <h3 class="text-center">Overall Performance</h3>
+            <canvas id="myChart7" width="400" height="200"></canvas>
+            {%endif%}
+            <script>
+
+
+
+const ctx7 = document.getElementById('myChart7').getContext('2d');
+const myChart7 = new Chart(ctx7, {
+    type: 'line',
+    data: {
+        labels: ['Semester1','Semester2','Semester3','Semester4','Semester5','Semester6'],
+        datasets: [{
+            label: 'Semesters',
+            data: [{{actual1}},{{actual2}},{{actual3}},{{actual4}},{{actual5}},{{actual6}}],
+            fill: false,
+            borderColor:  'rgba(14, 145, 138, 0.8)',
+            tension: 1
+
+        }]
+    },
+
+});
+
+            </script>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
